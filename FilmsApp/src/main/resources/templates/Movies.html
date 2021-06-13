@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>Films</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet"
+ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+ crossorigin="anonymous">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" type="text/css" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+    <h1 th:text="${Something}"/>
+    <button th:onclick="movieForm();">Add Movie</button>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col" th:onclick="sortActors(0)">Name</th>
+                <th scope="col">Release</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Media</th>
+                <th scope="col">Language</th>
+                <th scope="col">Actors</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="movie: ${movies}">
+                <td th:text="${movie.getName()}"></td>
+                <td th:text="${movie.getRelease()}"></td>
+                <td th:text="${movie.getType()}"></td>
+                <td th:text="${movie.getDescription()}"></td>
+                <td th:text="${movie.getMedia()}"></td>
+                <td th:text="${movie.getLanguage()}"></td>
+                <td th:text="${movie.getActors()}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p id="GFG_DOWN"></p>
+</body>
+<script type="text/javascript" th:src="@{/js/tableSort.js}"></script>
+</html>

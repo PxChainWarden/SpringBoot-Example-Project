@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <title>Films</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container" style="max-width: 1200px;">
+  <div class="container">
+    <div class="main-body">
+
+      <nav aria-label="breadcrumb" class="main-breadcrumb">
+        <ol class="breadcrumb">
+          <h2 th:text="${movies.getName()}+' Details'"></h2>
+        </ol>
+      </nav>
+
+      <div class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img th:src="${movies.getUrl()}" onerror="this.src='/img/placeholder2.jpg';" width="150">
+                <div class="mt-3">
+                  <h4 th:text="${movies.getName()}"></h4>
+                  <p class="text-secondary mb-1" th:text="${movies.getTypeString()}"></p>
+                  <p class="text-secondary mb-1" th:text="${movies.getLanguageString()}"></p>
+                  <p class="text-secondary mb-1" th:text="${movies.getMediaString()}"></p>
+                  <p class="text-muted font-size-sm" th:text="${movies.getRelease()}"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Type</h6>
+                </div>
+                <div class="col-sm-9 text-secondary" th:text="${movies.getTypeString()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Media</h6>
+                </div>
+                <div class="col-sm-9 text-secondary" th:text="${movies.getMediaString()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Language:</h6>
+                </div>
+                <div class="col-sm-9 text-secondary" th:text="${movies.getLanguageString()}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Description:</h6>
+                </div>
+                <div class="col-sm-9 text-secondary" th:text="${movies.getDescription()}">
+                </div>
+              </div>
+              <hr>
+              <div th:each="actor: ${actors}">
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Actor:</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary" th:text="${actor.toString()}">
+                  </div>
+                </div>
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
